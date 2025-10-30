@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BANANA GAME</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="game.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>THE BANANA GAME</h1>
+            <div class="game-info">
+                <p>Level: <span id="level">1</span></p>
+                <p>Score: <span id="score">0</span></p>
+                <p>Time: <span id="timer">60</span>s</p>
+            </div>
+        </header>
+        <main>
+            <div class="question-area">
+                <img id="banana-image" src="" alt="Banana Challenge">
+                <p id="challenge">Loading challenge...</p>
+            </div>
+            <div class="answer-area">
+                <input type="text" id="answer" placeholder="Type your answer here">
+                <button id="submit-answer">Submit</button>
+            </div>
+        </main>
+        <footer>
+            <button id="restart">Restart Game</button>
+        </footer>
+    </div>
+</body>
+</html>

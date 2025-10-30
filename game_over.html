@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Banana Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-over-container">
+        <h1>Game Over</h1>
+        <p>Your Score: <span id="player-score">0</span></p>
+        <h2>Top 7 Players</h2>
+        <table class="scoreboard">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Player</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="scoreboard-body">
+                <tr>
+                    <td colspan="3">Loading...</td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="restartGame()">Restart Game</button>
+    </div>
+    <script src="game_over.js"></script>
+</body>
+</html>
