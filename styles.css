@@ -62,57 +62,6 @@ button {
 button:hover {
     background-color: #ffa31a;
 }
-.register-container {
-    margin-top: 15px;
-    text-align: center;
-}
-
-.register-container p {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.register-button {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.register-button:hover {
-    background-color: #45a049;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: url('bbanana1.jpg') no-repeat center center fixed;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #333;
-}
-
-.register-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px;
-    border-radius: 15px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    text-align: center;
-}
 
 h1 {
     font-size: 24px;
@@ -266,7 +215,6 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
    
 }
-
 
 .scoreboard {
     width: 100%;
@@ -428,3 +376,197 @@ footer button:hover {
     background-color: #ffcc33;
     color: #fff;
 }
+
+/* Game Buttons */
+.game-btn {
+    padding: 12px 20px;
+    background-color:  #ffa31a;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4a3b00;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.25s ease-in-out;
+    margin: 5px;
+}
+
+.game-btn:hover {
+    background-color: #ffdd66;
+    transform: scale(1.05);
+}
+
+.game-btn:active {
+    transform: scale(0.95);
+}
+
+/* Icon inside the button */
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Leaderboard button special color */
+.leaderboard-btn {
+    background-color: #ffc107;
+    color: #3a2c00;
+}
+
+.leaderboard-btn:hover {
+    background-color: #ffdb58;
+}
+
+/* login error message */
+.alert-box {
+    background: #ffdddd;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border-left: 5px solid #d8000c;
+    color: #a30000;
+    border-radius: 6px;
+    font-size: 14px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------- Register Page Styles ----------------- */
+.register-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;       /* Fixed width for container */
+    text-align: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+}
+
+.register-container h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.register-container p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Form layout */
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-container label {
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Input boxes: same size */
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
+    width: 100%;
+    padding: 12px 40px 12px 12px; /* space for eye icon in password */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.register-container input[type="text"]:focus,
+.register-container input[type="email"]:focus,
+.register-container input[type="password"]:focus {
+    border-color: #ffb84d;
+    box-shadow: 0 0 5px rgba(255, 184, 77, 0.5);
+}
+
+/* Password wrapper for eye icon */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #777;
+}
+
+.toggle-password:hover {
+    color: #333;
+}
+
+/* Button: same width as input */
+.register-container button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ffb84d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #ffa31a;
+}
+
+/* Login link under register */
+.register-container .login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.register-container .login-link a {
+    color: #ffb84d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-container .login-link a:hover {
+    color: #ffa31a;
+}
+
+/* Error message */
+#passwordError {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.register-container button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffb84d;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.register-container button:hover {
+    background-color: #ffa500;
+}
+

@@ -18,7 +18,7 @@ const correctSound = document.getElementById("correct-sound");
 const incorrectSound = document.getElementById("incorrect-sound");
 const gameOverSound = document.getElementById("gameover-sound");
 
-// Fetch challenge from API
+// Fetch random math challenge from API
 async function fetchChallenge() {
     try {
         const response = await fetch("https://www.sanfoh.com/uob/banana/api.php");

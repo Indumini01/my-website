@@ -36,8 +36,12 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </main>
         <footer>
-            <button id="restart">Restart Game</button>
-        </footer>
+    <button id="restart" class="game-btn">Restart Game</button>
+
+    <button id="leaderboard-btn" class="game-btn leaderboard-btn">
+        Leaderboard
+    </button>
+</footer>
     </div>
 <audio id="correct-sound" src="test/correct.mp3"></audio>
 <audio id="incorrect-sound" src="test/incorrect.mp3"></audio>

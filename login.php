@@ -1,45 +1,66 @@
 <?php
-// Include the database configuration file
-include 'config.php';
-
-// Start a session to store user data
 session_start();
+include "config.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Get user input
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+$error_message = null;
 
-    // Check if the username exists in the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if ($result->num_rows === 1) {
-        // Fetch the user record
-        $user = $result->fetch_assoc();
+    $username = $_POST["username"];
+    $password = $_POST["password"];
 
-        // Verify the password
-        if (password_verify($password, $user['password'])) {
-            // Store user data in session
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
+    // Check if username exists
+    $query = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $query->execute([$username]);
 
-            // Redirect to the game page
-            header("Location: game.html");
-            exit();
-        } else {
-            echo "Incorrect password!";
-        }
+    if ($query->rowCount() == 0) {
+        $error_message = "Username does not exist!";
     } else {
-        echo "Username does not exist!";
-    }
+        $user = $query->fetch();
 
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-} else {
-    echo "Invalid request method.";
+        if (password_verify($password, $user["password"])) {
+            $_SESSION["user_id"] = $user["id"];
+            header("Location: game.php");
+            exit;
+        } else {
+            $error_message = "Incorrect password!";
+        }
+    }
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Banana Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>The Banana Game</h1>
+
+        <!-- ERROR MESSAGE BOX -->
+        <?php if ($error_message): ?>
+        <div class="alert-box">
+            <?php echo $error_message; ?>
+        </div>
+        <?php endif; ?>
+
+        <form action="login.php" method="post">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="register-container">
+            <p>Don't have an account?</p>
+            <a href="register.html" class="register-button">Register</a>
+        </div>
+    </div>
+</body>
+</html>
