@@ -1,24 +1,19 @@
 <?php
+ob_start(); // prevents header errors
+
 include 'config.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Backend strong password check
-    if (!preg_match('/.{8,}/', $password) ||
-        !preg_match('/[A-Z]/', $password) ||
-        !preg_match('/[a-z]/', $password) ||
-        !preg_match('/[0-9]/', $password) ||
-        !preg_match('/[!@#$%^&*(),.?":{}|<>]/', $password)) {
-        echo "Password is too weak. Please use a stronger password.";
-        exit();
+    if (!isset($_POST['username'], $_POST['password'])) {
+        die("Invalid form submission.");
     }
 
-    if (empty($username) || empty($password)) {
-        echo "Username and password are required!";
-        exit();
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+
+    if ($username === "" || $password === "") {
+        die("Username and password are required!");
     }
 
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
@@ -30,12 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location: index.html");
         exit();
     } else {
-        echo "Error: " . $stmt->error;
+        die("SQL Error: " . $stmt->error);
     }
-
-    $stmt->close();
-    $conn->close();
-} else {
-    echo "Invalid request method.";
 }
 ?>
