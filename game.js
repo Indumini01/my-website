@@ -141,6 +141,12 @@ restartBtn.onclick = startGame;
 // Start the game on page load
 window.onload = startGame;
 
+// Leaderboard button — go to leaderboard page
+const leaderboardBtn = document.getElementById("leaderboard-btn");
+
+leaderboardBtn.addEventListener("click", function () {
+    window.location.href = "get_scores.php";
+});
 
 // Background slideshow
 const backgrounds = [
